@@ -1,0 +1,215 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OXFORD THESIS TEMPLATE
+
+% Originally by Keith A. Gillow (gillow@maths.ox.ac.uk), 1997
+% Modified by Sam Evans (sam@samuelevansresearch.org), 2007
+% Modified by John McManigle (john@oxfordechoes.com), 2015
+% Modified by Maud Gautier (https://github.com/MaudGautier), 2019
+% Modified by Thibault Latrille (https://github.com/ThibaultLatrille), 2020
+% Modified by Benjamin Guinet (https://github.com/Niwradel), 2023
+
+%
+% This version Copyright (c) 2023 Benjamin Guinet
+%
+% Broad permissions are granted to use, modify, and distribute this software
+% as specified in the MIT License included in this distribution's LICENSE file.
+
+%%%%% CHOOSE PAGE LAYOUT
+%\documentclass[a4paper,openright,twoside]{thesis}
+\documentclass[a4paper,oneside,nobind]{thesis}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx,calc}
+\usepackage{natbib}
+\usepackage{bm}
+\usepackage{bbm}
+\usepackage{pdflscape}
+\usepackage{pdflscape}
+\usepackage{array}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{tabu}
+\usepackage{multirow}
+\usepackage{booktabs}
+\mtcselectlanguage{french} 
+\selectlanguage{french}
+\usepackage{afterpage}
+
+
+\definecolor{Nonpolar}{HTML}{fef1d2}
+\definecolor{Polar}{HTML}{a9fdd8}
+\definecolor{Basic}{HTML}{d7f8ff}
+\definecolor{Acidic}{HTML}{feceea}
+\definecolor{Stop}{HTML}{D0D0D0}
+
+\graphicspath{{figures/}{MutationSelectionDrift/artworks/}{GenotypePhenotypeFitness/artworks/}{GenotypePhenotypeFitness/}{NucleotideBias/artworks/}}
+\makeatletter
+\def\input@path{{MutationSelectionDrift/artworks/}{GenotypePhenotypeFitness/artworks/}{NucleotideBias/artworks/}}
+\makeatother
+
+\input{notations}
+% make part like a chapter
+
+%%%%% THE ACTUAL DOCUMENT STARTS HERE
+\begin{document}
+    \renewcommand{\contentsname}{Table des Matières} 
+    \renewcommand{\listfigurename}{Liste de Figures}
+    \renewcommand{\listtablename}{Liste de Tables}
+    \renewcommand{\partname}{Partie}
+    \pagenumbering{gobble}
+    \hypersetup{pageanchor=false}
+    \input{sections/frontpage}
+%%%%% CHOOSE YOUR LINE SPACING HERE
+    \setlength{\textbaselineskip}{1em}
+% You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
+    \setlength{\frontmatterbaselineskip}{1em}
+% Leave this line alone; it gets things started for the real document.
+    \setlength{\baselineskip}{\textbaselineskip}
+
+%%%%% CHOOSE YOUR SECTION NUMBERING DEPTH HERE
+% The level that gets a number:
+%    \setcounter{secnumdepth}{2}
+% The level that shows up in the ToC:
+    \setcounter{tocdepth}{3}
+    \setcounter{minitocdepth}{5}
+
+%%%% EPIGRAPH
+    \begin{alwayssingle}
+        \thispagestyle{empty}
+        \vspace*{\fill}
+        \makebox[\textwidth][r] {
+        \begin{minipage}[t]{8cm}
+            \emph{}\\
+            \hfill \slshape{A toi Maman qui t'es toujours battue pour moi.\\ À toi Mamie qui aurait rêvé d'avoir eu la chance, tout comme moi, d'apprendre tant de belles choses.}\\
+        \end{minipage}
+        }
+        \vspace*{\fill}
+        \vspace*{\fill}
+    \end{alwayssingle}
+
+    
+%%%%% ABSTRACT FRENCH
+    \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
+
+    \begin{alwayssingle}
+        \input{sections/abstract_fr}
+    \end{alwayssingle}
+
+%%%%% ACKNOWLEDGEMENTS
+    \begin{alwayssingle}
+    	\input{sections/acknowledgement}
+	\end{alwayssingle}
+%%%%% ABSTRACT ENGLISH
+
+    \hypersetup{pageanchor=true}
+    \begin{romanpages}
+
+        \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
+
+        \setlength{\baselineskip}{\frontmatterbaselineskip}
+
+%%%%% MINI TABLES
+        \dominitoc % include a mini table of contents
+%\dominilof  % include a mini list of figures
+%\dominilot  % include a mini list of tables
+% This aligns the bottom of the text of each page.  It generally makes things look better.
+        \flushbottom
+% This is where the whole-document ToC appears:
+        {
+        \setlength{\baselineskip}{1.1\frontmatterbaselineskip}
+        \hypersetup{linkcolor=GREYDARK}
+        \tableofcontents
+        \listoffigures
+        \mtcaddchapter
+        \listoftables
+        \mtcaddchapter
+        }
+        {
+        \setlength{\baselineskip}{1.1\frontmatterbaselineskip}
+        \input{sections/glossary}
+        }
+
+    \end{romanpages}
+
+%%%% CHAPTERS
+    \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
+    \pagenumbering{arabic}
+    \flushbottom
+    \input{PhD-master/sections/acronymes.tex}
+    \input{sections/preamble}
+
+%%%%% DEDICATION
+    \begin{alwayssingle}
+        \thispagestyle{empty}
+        \newgeometry{hmargin={1.6cm, 1.6cm}, vmargin={1.5cm,1.5cm}, headsep=.5cm,footskip=0.5cm}
+        \begin{center}
+            \includegraphics[valign=t,width=1\textwidth, page=1] {figures/preface3}
+        \end{center}
+        \restoregeometry
+    \end{alwayssingle}
+    
+    \pagestyle{fancybook}
+
+    \part{Introduction}
+
+    \label{part:intro}
+    \input{PhD-master/sections/intro_context}
+    \input{sections/intro_EVEs_dEVEs}
+    \input{sections/intro_parasitoids}
+    \input{sections/intro_objectifs_these}
+
+    \part{Résumés des études}
+    \label{part:studies}
+    
+    \thispagestyle{empty}
+    \input{PhD-master/sections/Papier1_resume.tex}
+    \thispagestyle{empty}
+    \input{PhD-master/sections/Papier2_resume.tex}
+    \thispagestyle{empty}
+    \input{PhD-master/sections/Papier3_resume.tex}
+    
+    \part{Discussion générale}
+    \label{part:discussion}
+    \input{PhD-master/sections/discuss-general}
+
+
+
+    \part{Études}
+    \thispagestyle{empty}
+    \input{PhD-master/sections/Papier1_Approche_globale.tex}
+    \thispagestyle{empty}
+    \input{PhD-master/sections/Papier2_Filamentoviridae.tex}
+    \thispagestyle{empty}
+    \input{PhD-master/sections/Papier3_datation.tex}
+    \thispagestyle{empty}
+    
+    \part{Annexes}
+    \label{part:annexes}
+    \input{PhD-master/sections/discuss-new_viral_discovery}
+    \input{sections/annexe_methods}
+    \input{sections/annexe_CV}
+    \input{PhD-master/sections/annexe_reviewers_report}
+    \input{PhD-master/sections/annexe_certificat_of_achievement}
+
+
+%% APPENDICES %% 
+    \part{Appendices}
+
+    \thispagestyle{empty}
+    \newpage
+
+    \thispagestyle{empty}
+    
+%%%%% REFERENCES
+    \thispagestyle{empty}
+    \bibliographystyle{natbib}
+    \bibliography{references/references, references/introduction}
+\end{document}
+
+
+
+
